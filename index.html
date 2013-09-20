@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Bing IODB TileLayer Test</title>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+<link rel="stylesheet" href="Control.OSMGeocoder.css" />
+<script src="Control.OSMGeocoder.js"></script>
+<script src="Bing.js"></script>
+<script src="Bing.IODB.js"></script>
+<style>
+body { margin: 0; }
+#map { height: 100%; }
+</style>
+<script>
+    var bing;
+    function init() {
+        var map = L.map('map', { minZoom: 12 }).setView([59.9, 30.3], 18);
+        L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors'
+        }).addTo(map);
+	bing = L.bingLayer('AqXL21QURkJrJz4m4-IJn2smkeX5KIYsdhiNIH97boShcUMagCnQPn3JMYZjFEoH', {opacity: 0.6});
+	bing.addTo(map);
+        bing.on('offset', function(data) {
+            document.getElementById('distance').textContent = data.found ? 'Bing is shifted by ' + Math.round(data.distance) + ' m' : 'No bing offset found';
+        });
+	map.addControl(new L.Control.OSMGeocoder({collapsed: false, position: 'topleft', text: '?'}));
+    }
+</script>
+</head>
+<body onload="javascript:init();">
+<div id="map">
+<div class="leaflet-control leaflet-bar mycontrol" style="left: 10px; top: 115px; background: #eee; padding: 5px;">
+<input type="checkbox" id="togglebing" checked="checked" onclick="javascript:bing.setOpacity(this.checked ? 0.6 : 0.0);"><label for="togglebing"> imagery</label><br>
+<input type="checkbox" id="toggleoffset" checked="checked" onclick="javascript:bing.setOffsetEnabled(this.checked);"><label for="toggleoffset"> offset</label>
+<div id="distance"></div>
+</div>
+</div>
+</body>
+</html>
