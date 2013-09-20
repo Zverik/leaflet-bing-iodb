@@ -1,6 +1,6 @@
 # IODB for Bing Leaflet Layer
 
-[Demonstration page](http://zverik.github.io/leaflet-bing-iodb/)
+[*Demonstration page*](http://zverik.github.io/leaflet-bing-iodb/)
 
 Nice projects like [show-me-the-way](http://osmlab.github.io/show-me-the-way/), that
 show OSM data on top of Bing imagery, have one tiny flaw: in most areas of the world
