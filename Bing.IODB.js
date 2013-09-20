@@ -57,8 +57,8 @@ L.BingLayer = L.BingLayer.extend({
             zoom = this._map.getZoom(),
             offset = zoom < 15 || !this.options.offsetEnabled ? this._offset0 : this._offset,
             zoomDiff = Math.pow(2, 22 - zoom);
-        style.left = Math.round(-offset.x / zoomDiff);
-        style.top = Math.round(-offset.y / zoomDiff);
+        style.left = Math.round(-offset.x / zoomDiff) + 'px';
+        style.top = Math.round(-offset.y / zoomDiff) + 'px';
     },
 
     _queryIODB: function (latlng, context, callback) {
