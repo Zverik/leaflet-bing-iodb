@@ -5,6 +5,7 @@
 <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 <link rel="stylesheet" href="lib/Control.OSMGeocoder.css" />
 <script src="lib/Control.OSMGeocoder.js"></script>
+<script src="lib/Permalink.js"></script>
 <script src="lib/Bing.js"></script>
 <script src="Bing.IODB.js"></script>
 <style>
@@ -24,6 +25,7 @@ body { margin: 0; }
             document.getElementById('distance').textContent = data.found ? 'Bing is shifted by ' + Math.round(data.distance) + ' m' : 'No bing offset found';
         });
 	map.addControl(new L.Control.OSMGeocoder({collapsed: false, position: 'topleft', text: '?'}));
+        map.addControl(new L.Control.Permalink());
     }
 </script>
 </head>
