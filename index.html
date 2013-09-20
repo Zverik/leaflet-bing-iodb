@@ -15,7 +15,7 @@ body { margin: 0; }
 <script>
     var bing;
     function init() {
-        var map = L.map('map', { minZoom: 12 }).setView([59.9, 30.3], 18);
+        var map = L.map('map', { minZoom: 12, doubleClickZoom: false }).setView([59.9, 30.3], 18);
         L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data &copy; <a href="http://openstreetmap.org/">OpenStreetMap</a> contributors'
         }).addTo(map);
